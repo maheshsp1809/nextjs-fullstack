@@ -17,19 +17,21 @@ interface prop {
     id: string
 }
 
+const fetcher = (url: string) => fetch(url).then(res => res.json());
+
 function UserDetail({ params }: { params: prop }) {
 
     const [userdata, setUserDetails] = useState<User | null>(null);
+    
+    // useEffect(() => {
+    //     async function fetchSingleUser(id: string) {
+    //         const res = await fetch(`https://dummyjson.com/users/${id}`);
+    //         const data = await res.json();
+    //         setUserDetails(data);
+    //     }
+    //     fetchSingleUser(params.id)
 
-    useEffect(() => {
-        async function fetchSingleUser(id: string) {
-            const res = await fetch(`https://dummyjson.com/users/${id}`);
-            const data = await res.json();
-            setUserDetails(data);
-        }
-        fetchSingleUser(params.id)
-
-    }, []);
+    // }, []);
 
     return (
         <>

@@ -11,7 +11,7 @@ interface User {
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 const UsersDetails = () => {
     const [users, setUsers] = useState<User[]>([]);
-    const { data, error } = useSWR("https://dummyjson.com/users", fetcher);
+    const { data, error }= useSWR<User[]>("https://dummyjson.com/users", fetcher);
     console.log("data", data)
     // useEffect(() => {
     //     async function fetchUsers() {
@@ -21,7 +21,7 @@ const UsersDetails = () => {
     //     }
     //     fetchUsers();
     // }, [])
-    return (<>
+    return (<>{data.users && data.users.map((user) => <li key={user.id}><Link href={`/users/${user.id}`}>{user.firstName}</Link></li>)}
 
     </>);
 }

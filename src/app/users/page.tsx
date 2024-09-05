@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from 'swr';
+// lightweight cacheing provides
 
 interface User {
     id: number;
